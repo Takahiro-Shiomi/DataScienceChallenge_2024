@@ -1,7 +1,6 @@
-class conf:
+from dataclasses import dataclass
 
-    def __init__(self):
-        self.save_name = ""  
-        self.a = 16 
-        self.b = 4 
-        self.save = True #保存するかどうか
+@dataclass(frozen=True)
+class conf:
+    a : int = 16
+    b : int = 4
