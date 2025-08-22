@@ -1,0 +1,8 @@
+2025-08-21 10:26:37,517 __main__:12 main [INFO]: info message
+2025-08-21 10:26:37,517 __main__:13 main [WARNING]: warning message
+2025-08-21 10:26:37,517 __main__:14 main [ERROR]: error message
+2025-08-21 10:26:37,517 __main__:15 main [CRITICAL]: critical message
+2025-08-21 11:07:23,423 __main__:17 main [INFO]: info message
+2025-08-21 11:07:23,424 __main__:18 main [WARNING]: warning message
+2025-08-21 11:07:23,424 __main__:19 main [ERROR]: error message
+2025-08-21 11:07:23,424 __main__:20 main [CRITICAL]: critical message
