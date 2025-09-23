@@ -2,16 +2,21 @@ import boto3
 import tempfile
 import csv
 from typing import List
+from logging import getLogger, config
 
 from data.inputdata import HotelReviews_Raw 
 
 # 1.Load Data
+
+logger = getLogger("__main__.load")
 
 class Load_Rawdata:
     def __init__(self, s3_bucket, input_folder, input_file):
         self.s3_bucket : str = s3_bucket
         self.input_folder  : str = input_folder
         self.input_file : str = input_file
+
+        self.logger = getLogger("__main__.load.Load")
 
     def load_data(self) -> List[HotelReviews_Raw]:
         # Create TemppraryDirectory 
@@ -50,7 +55,12 @@ class Load_Rawdata:
                                     lng=row['lng']
                                     )
                 hotel_reviews.append(hotel_review)
-        print(len(hotel_reviews))
+        self.logger.info("Data Length = " + str(len(hotel_reviews)))
+        
+        tmpdir.cleanup()
+        
+        self.logger.info("Complete 1.Load Data")
+        
         return hotel_reviews
 
     def connect_s3(self):
