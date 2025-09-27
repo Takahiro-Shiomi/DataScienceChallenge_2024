@@ -45,7 +45,8 @@ class Modeling:
         y_pred = model.predict(X_valid, num_iteration=model.best_iteration)
 
         rmse = mean_squared_error(y_valid, y_pred)
-
+        
+        self.logger.info("<<Evaluate RMSE>>")
         self.logger.info(f"RMSE: {rmse:.4f}")
         
         self.logger.info("Complete 3. Data Preprocessing")

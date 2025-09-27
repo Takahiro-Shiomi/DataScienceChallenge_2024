@@ -9,6 +9,7 @@ from load.load_data import Load_Rawdata
 from load.validate_data import Validate_Data
 from preprocess.data_preprocess import Data_Preprocess
 from modeling.modeling import Modeling
+from export.export_data import Export_Data
 
 with open("/home/ec2-user/DataScienceChallenge_2024/log/log_config.json") as f:
     config.dictConfig(json.load(f))
@@ -30,7 +31,7 @@ def main():
     hotel_reviews = loaddata.load_data()
     
     # 2.Check Data
-    validatedata = Validate_Data()
+    validatedata = Validate_Data(set_conf.coltype_dict)
     val_hotel_reviews = validatedata.validate_data(hotel_reviews)
 
     # 3.Data Preprocessing
@@ -43,8 +44,9 @@ def main():
 
     # 5.Evaluate Model
 
-    # 6.Output Model
-
+    # 6.Export
+    exportdata = Export_Data(set_conf.s3_buket, set_conf.output_folder, set_conf.output_model)
+    exportdata.export_model(model)
 
 
 if __name__ == "__main__":

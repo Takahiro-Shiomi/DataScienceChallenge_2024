@@ -15,7 +15,7 @@ class Data_Preprocess:
 
     def data_preprocessing(self, val_hotel_reviews) -> pd.DataFrame:
        
-        df_hotel_reviews = pd.DataFrame(val_hotel_reviews)
+        df_hotel_reviews = val_hotel_reviews
  
         cols: list =['Average_Score',
                      'Review_Total_Negative_Word_Counts',
@@ -23,9 +23,7 @@ class Data_Preprocess:
                      'Reviewer_Score'
                      ]
         
-        df_hotel_reviews[cols] = df_hotel_reviews[cols].astype(float)
-        self.logger.info(df_hotel_reviews.info())
-        df_hotel_reviews = df_hotel_reviews.select_dtypes(include=['int64', 'float64', 'int32'])
+        df_hotel_reviews = df_hotel_reviews[cols]
 
         self.logger.info("Complete 3. Data Preprocessing")
 
