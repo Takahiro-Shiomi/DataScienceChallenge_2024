@@ -26,6 +26,7 @@ class Validate_Data:
         self.logger.info(f"{df_hotel_reviews.info()}")
         self.logger.info("<<Data Describe>>")
         self.logger.info(f"{df_hotel_reviews.describe()}")
+
         self.logger.info("Complete 2.Check Data")
 
         return df_hotel_reviews

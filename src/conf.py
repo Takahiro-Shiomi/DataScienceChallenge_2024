@@ -1,14 +1,18 @@
 from dataclasses import dataclass, field
 
 @dataclass(frozen=True)
-class conf:
+class s3_conf:
     s3_buket : str =  'amazon-sagemaker-799695492243-ap-northeast-1-ec1dee4237a7'
+    
     input_folder : str = 'test-buket'
     input_file : str = 'Hotel_Reviews.csv'
+
     output_folder : str = 'test-buket/result'
     output_file : str = 'output.csv'
     output_model : str = 'output_model.pkl'
 
+@dataclass(frozen=True)
+class data_conf:
     col_name :list = field(default_factory=lambda:
                            ['Hotel_Address',
                             'Additional_Number_of_Scoring',
@@ -63,3 +67,7 @@ class conf:
                           'days_since_review'            : 'str',
                           'lat'                          : 'float',
                           'lng'                          : 'float'})
+
+@dataclass(frozen=True)
+class model_conf:
+    random_seed : int = 42
